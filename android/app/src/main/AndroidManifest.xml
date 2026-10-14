@@ -5,7 +5,7 @@
         android:label="vault"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         
-        <!-- 必须添加这行：声明使用 v2 嵌入 -->
+        <!---->
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
