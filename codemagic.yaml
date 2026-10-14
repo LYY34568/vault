@@ -1,13 +1,13 @@
 workflows:
-  default-workflow:
-    name: Vault Default Workflow
-    instance_type: mac_mini_m2
-    max_build_duration: 60
+  android-release:
+    name: Vault Android Release
+    max_build_duration: 15
     environment:
       flutter: stable
-      groups:
-        - codemagic
     scripts:
+      - flutter --version
+      #
+      - flutter create --platforms=android .
       - flutter pub get
       - flutter build apk --release
     artifacts:
@@ -15,4 +15,4 @@ workflows:
     publishing:
       email:
         recipients:
-          - 1308270029@qq.com
+          - your_email@example.com
