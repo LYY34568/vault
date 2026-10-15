@@ -1,48 +1,38 @@
 import 'package:flutter/material.dart';
-import 'vault.dart';
 
-void main() => runApp(VaultApp());
+void main() {
+  runApp(const MyApp());
+}
 
-class VaultApp extends StatelessWidget {
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Vault',
-      theme: ThemeData.dark(),
-      home: VaultHome(),
+      title: '穹顶 Vault',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const MyHomePage(),
     );
   }
 }
 
-class VaultHome extends StatefulWidget {
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
   @override
-  _VaultHomeState createState() => _VaultHomeState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _VaultHomeState extends State<VaultHome> {
-  List<VaultFile> videos = [];
-
-  @override
-  void initState() {
-    super.initState();
-    loadVideos();
-  }
-
-  void loadVideos() async {
-    final list = await VaultStorage.listVideos();
-    setState(() => videos = list);
-  }
-
+class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('穹顶 Vault')),
-      body: ListView.builder(
-        itemCount: videos.length,
-        itemBuilder: (_, i) => ListTile(
-          title: Text(videos[i].name),
-          subtitle: Text('${(videos[i].size / 1024 / 1024).toStringAsFixed(1)} MB'),
-        ),
+      body: Center(
+        child: Text('欢迎光临，主人~'),
       ),
     );
   }
